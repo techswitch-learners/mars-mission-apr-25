@@ -29,7 +29,7 @@ function MissionManifest(props: RoverType) {
     const [solData, setSolData] = useState({} as solData);
 
     useEffect(() => {
-        fetch(`https://api.nasa.gov/mars-photos/api/v1/manifests/Opportunity?api_key=${apiKey}`).then(response => response.json()).then((response) => {
+        fetch(`https://api.nasa.gov/mars-photos/api/v1/manifests/${props.roverName}?api_key=${apiKey}`).then(response => response.json()).then((response) => {
         let data = response.photo_manifest;
         setManifestData({
                 name: data.name,
