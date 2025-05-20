@@ -6,7 +6,6 @@
     "@testing-library/dom": "^10.4.0",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.126",
-    "@types/react": "^19.1.4",
     "@types/react-dom": "^19.1.5",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
@@ -14,6 +13,7 @@
     "react-router-dom": "^7.6.0",
     "react-scripts": "5.0.1",
     "sass": "^1.88.0",
+    "typescript": "^5.8.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -48,7 +48,7 @@
     "@testing-library/react": "^16.1.0",
     "@testing-library/user-event": "^14.6.1",
     "@types/jest": "^29.5.14",
-    "@types/react": "^19.0.10",
+    "@types/react": "^19.1.4",
     "@types/sass": "^1.45.0",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^10.0.1",
