@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-// type roverProp = {
-//     name: string;
-// }
+import { Carousel } from "react-responsive-carousel";
+import './RoverImages.scss';
 
-type roverResponse = {
+type RoverResponse = {
     id: number,
     img_src: string
 }
@@ -13,20 +12,20 @@ type roverResponse = {
 const api = 'fCp5fNsscdDmov0Vw4lpU4bOkdMTCuCA9tnoKgYH'
 
 function RoverImages(props: {name: string}) {
-    const [roverResponse, setRoverResponse] = useState<roverResponse[]>();
+    const [roverResponse, setRoverResponse] = useState<RoverResponse[]>();
     const [latestPhotoDate, setLatestPhotoDate] = useState<string>();
     const [latestCameras, setLatestCameras] = useState<[]>();
+    const [isLoading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
         try {
         fetch (`https://api.nasa.gov/mars-photos/api/v1/manifests/${props.name}?api_key=${api}`)
         .then(response => response.json())
+        
         .then(data => {
             setLatestPhotoDate(data.photo_manifest.max_date)
             setLatestCameras(data.photo_manifest.photos[data.photo_manifest.photos.length -1].cameras)
-        
         })
-
     }
     catch (err){
        console.log(err);
@@ -42,6 +41,7 @@ function RoverImages(props: {name: string}) {
         .then(response => response.json())
         .then(data => {
             setRoverResponse(data.photos)
+            setLoading(false)
         })
     }
     catch (err){
@@ -50,14 +50,19 @@ function RoverImages(props: {name: string}) {
     } }, [latestPhotoDate])
 
     return (
-        <div>
-        {!roverResponse ? (
-        <h2> sorry, nothing to display right now, check back later!</h2>
-        ): ( roverResponse.map((image) => (
-            <img key= {image.id} src={image.img_src}/>
-     ))
-    )}
-    </div>
+        //this needs to display loading first then nothing to display otherwise 
+        <ul>
+            {!roverResponse ? (
+            <h2> Loading...!</h2>
+            ): 
+            ( roverResponse.map((image) => (
+                <li>
+                    <img key= {image.id} src={image.img_src} />
+                </li>    
+            ))
+        )   
+        }
+       </ul>
     )
 }
 

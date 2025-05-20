@@ -1,0 +1,55 @@
+ul {
+  width: 100vw;
+  height: 300px;
+  padding: 20px;
+  display: flex;
+  gap: 4vw;
+  overflow-x: scroll;
+  overflow: hidden;
+  scroll-snap-type: x mandatory;
+  
+
+  li {
+    list-style-type: none;
+    padding: 20px;    
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+ul::scroll-button(left) {
+     content: "◄";
+   
+   right: calc(anchor(left) - 50px);
+    bottom: calc(anchor(top) + 13px);
+}
+
+ul::scroll-button(right) {
+     content: "►";
+   left: calc(anchor(right) - 50px);
+   bottom: calc(anchor(top) + 13px);
+}
+
+ul::scroll-button(*) {
+  border: 0;
+  font-size: 2rem;
+  background: none;
+  color: rgb(0 0 0 / 0.7);
+  cursor: pointer;
+}
+
+ul::scroll-button(*):hover,
+ul::scroll-button(*):focus {
+  color: rgb(0 0 0 / 1);
+}
+
+ul::scroll-button(*):active {
+  translate: 1px 1px;
+}
+
+ul::scroll-button(*):disabled {
+  color: rgb(0 0 0 / 0.2);
+  cursor: unset;
+}
