@@ -23,12 +23,13 @@ export default function PhotoOfTheDay () {
     .catch(error => console.error("error", error))}, []);
      const photoData= data
 
-return ( <div>
+return ( 
+<div>
         <div className="photoOfTheDayContainer">
             <img src={photo} className="photo-of-the-day" width="100%" alt-text={title} />
             
         </div>
-<div>
+        <div className="explanation">
         {explanation}
         </div>
 </div>
