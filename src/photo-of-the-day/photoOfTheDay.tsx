@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { data } from "react-router";
 import "./photoOfTheDay.scss";
+//import dayjs from 'dayjs';
 
 
 export default function PhotoOfTheDay () {
@@ -46,7 +47,7 @@ export default function PhotoOfTheDay () {
     //  const photoData= data)
         
 return ( 
-<div>
+<div>   
         <div className="photoOfTheDayContainer">
             <img src={photoAddress} className="photo-of-the-day" width="100%" alt-text={title}/>
             
