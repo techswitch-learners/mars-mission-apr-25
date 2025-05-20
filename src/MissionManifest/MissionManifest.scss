@@ -1,0 +1,28 @@
+@use "../App.scss" as AppCSS;
+@import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100..800&display=swap');
+
+#mission-manifest-container {
+    font-family: "Martian Mono", monospace;
+    width: 40vw;
+    margin: 0 auto;
+    background-color: #E4965B;
+    h2 {
+        font-weight: 900;
+    }
+    padding: 20px 25px 30px 25px;
+}
+
+#rover-mission-info-container {
+    display: grid;
+    grid-template-columns: 3fr 5fr;
+    grid-auto-rows: auto;
+    // border: 1px solid black;
+    p {
+        font-size: 0.8rem;
+        border: 1px solid black;
+        padding: 5px 9px;
+    }
+}
+.manifest-fieldname{
+    font-weight: 900;
+}

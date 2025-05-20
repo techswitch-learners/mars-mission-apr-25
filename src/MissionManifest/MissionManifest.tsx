@@ -1,7 +1,8 @@
-import {use, useState} from 'react';
+import {useState} from 'react';
 import {useEffect} from 'react';
 import { config } from 'dotenv';
 import { json } from 'stream/consumers';
+import "./MissionManifest.scss";
 
 type RoverType = {
     roverName: string;
@@ -17,16 +18,9 @@ type manifestData = {
     totalPhotos: number
 }
 
-type solData ={
-    sol: number;
-    earthDate: string;
-    totalPhotos: number;
-}
-
 function MissionManifest(props: RoverType) {
     const apiKey = process.env.REACT_APP_API_KEY;
     const [manifestData, setManifestData] = useState({} as manifestData);
-    const [solData, setSolData] = useState({} as solData);
 
     useEffect(() => {
         fetch(`https://api.nasa.gov/mars-photos/api/v1/manifests/${props.roverName}?api_key=${apiKey}`).then(response => response.json()).then((response) => {
@@ -40,15 +34,6 @@ function MissionManifest(props: RoverType) {
                 maxDate: data.max_date,
                 totalPhotos: data.total_photos
         })
-        let photosArrayLength = data.photos.length;
-        let photosData = response.photo_manifest.photos[photosArrayLength -1];
-        setSolData({
-            sol: photosData.sol,
-            earthDate: photosData.earth_date,
-            totalPhotos: photosData.total_photos
-        })
-        console.log('solData', solData);
-
         });
     }, [props.roverName]);
 
@@ -57,19 +42,24 @@ function MissionManifest(props: RoverType) {
         return <p>Loading...</p>
     } else {
     return (
-        <div className='rover-mission-info-container'>
-            <p>Name: {manifestData.name}</p>
-            <p>Landing Date: {manifestData.landingDate}</p>
-            <p>Launch Date: {manifestData.launchDate}</p>
-            <p>Status: {manifestData.status}</p>
-            <p>Max Sol: {manifestData.maxSol}</p>
-            <p>Max Date: {manifestData.maxDate}</p>
-            <p>Total photos: {manifestData.totalPhotos}</p>
-
-            <p>SOL DATA</p>
-            <p>sol {solData.sol}</p>
-            <p>earthDate {solData.earthDate}</p>
-            <p>totalPhotos {solData.totalPhotos}</p>
+        <div id='mission-manifest-container'>
+            <h2>MISSION MANIFEST</h2>
+            <div id='rover-mission-info-container'>
+                <p className='manifest-fieldname'>Rover Name: </p>
+                <p>{manifestData.name}</p>
+                <p className='manifest-fieldname'>Landing Date: </p>
+                <p>{manifestData.landingDate}</p>
+                <p className='manifest-fieldname'>Launch Date: </p>
+                <p>{manifestData.launchDate}</p>
+                <p className='manifest-fieldname'>Status: </p>
+                <p>{manifestData.status}</p>
+                <p className='manifest-fieldname'>Max Sol: </p>
+                <p>{manifestData.maxSol}</p>
+                <p className='manifest-fieldname'>Max Date: </p>
+                <p>{manifestData.maxDate}</p>
+                <p className='manifest-fieldname'>Total photos: </p>
+                <p>{manifestData.totalPhotos}</p>
+            </div>
         </div>
     )
 }

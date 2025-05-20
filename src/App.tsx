@@ -5,7 +5,7 @@ import {useState} from 'react';
 
 
 function App() {
-  const [rover, setRover] = useState('Spirit');
+  const [rover, setRover] = useState('Opportunity');
 
   return (
   <MissionManifest roverName={rover} />
