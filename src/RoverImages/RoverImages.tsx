@@ -1,15 +1,10 @@
 import React, { useState, useEffect } from "react";
-
-
-
 // type roverProp = {
 //     name: string;
 // }
 
 type roverResponse = {
-    camera: {
-        name: string;
-    },
+    id: number,
     img_src: string
 }
 
@@ -17,36 +12,49 @@ type roverResponse = {
 // const api = 'ffiSxDvu6k6PrMaGjIkoHGXNBaZMWFwqmOBIe2cZ'
 const api = 'fCp5fNsscdDmov0Vw4lpU4bOkdMTCuCA9tnoKgYH'
 
-function RoverImages() {
-//we can write logic to check the latest image dates 
+function RoverImages(props: {name: string}) {
     const [roverResponse, setRoverResponse] = useState<roverResponse[]>();
-    const today = new Date();
-    const dd = String(today.getDate() - 3);
-    const mm = String(today.getMonth() + 1);
-    const yyyy = String(today.getFullYear());
-    const latestDate = `${yyyy}-${mm}-${dd}`;
+    const [latestPhotoDate, setLatestPhotoDate] = useState<string>();
+    const [latestCameras, setLatestCameras] = useState<[]>();
 
     useEffect(() => {
         try {
-        fetch (`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${latestDate}&api_key=${api}`)
+        fetch (`https://api.nasa.gov/mars-photos/api/v1/manifests/${props.name}?api_key=${api}`)
         .then(response => response.json())
         .then(data => {
-            setRoverResponse(data.photos)
+            setLatestPhotoDate(data.photo_manifest.max_date)
+            setLatestCameras(data.photo_manifest.photos[data.photo_manifest.photos.length -1].cameras)
+        
         })
 
     }
     catch (err){
        console.log(err);
     }
-    }, [latestDate])
+    console.log(latestPhotoDate)
+}, [])
 
+
+      useEffect(() => {
+        if(latestPhotoDate){
+      try {
+        fetch (`https://api.nasa.gov/mars-photos/api/v1/rovers/${props.name}/photos?earth_date=${latestPhotoDate}&api_key=${api}`)
+        .then(response => response.json())
+        .then(data => {
+            setRoverResponse(data.photos)
+        })
+    }
+    catch (err){
+       console.log(err);
+    }
+    } }, [latestPhotoDate])
 
     return (
         <div>
         {!roverResponse ? (
         <h2> sorry, nothing to display right now, check back later!</h2>
         ): ( roverResponse.map((image) => (
-            <img src={image.img_src}/>
+            <img key= {image.id} src={image.img_src}/>
      ))
     )}
     </div>
