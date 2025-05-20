@@ -1,0 +1,16 @@
+
+.photoOfTheDayContainer{
+    display: flex;
+    justify-content: center;
+    flex-columns: 1fr
+
+    
+}
+
+.photo-of-the-day{
+    width: 50%;
+    margin: 50px;
+    border-radius: 20px;
+    border: 10px blue solid;
+
+}
