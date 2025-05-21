@@ -37,10 +37,13 @@ body {
 }
 
 .pop-up-profile-section{
+    display: flex;
+    flex-direction: column;
+    border: 3px red solid;
     background-color: #EE8434;
     width: 80%;
     justify-self: center;
-    display: flex;
+    justify-content: center;
     #profile-astronaut-picture{
         width: 100px;
         height: auto;
@@ -55,4 +58,8 @@ body {
 
 .profile-rover-photos{
     border: 2px purple solid;
+    width: 50%;
+    height: auto;
+    justify-content: center;
+    margin: 0 auto;
 }

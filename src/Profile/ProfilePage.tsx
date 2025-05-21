@@ -8,6 +8,7 @@ import { format } from "path";
 import './profilePage.scss';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 
 
     const API_KEY = "qUubKrhKBBrb0M4uQISHm089PavbKEcLW3v7tgiP";
@@ -20,6 +21,15 @@ export default function ProfilePage() {
     const [date, setDate] = useState<Date | null>(new Date());
     const [showProfile, setShowProfile] =useState<boolean>(false)
     const [roverPhotoUrls, setRoverPhotoUrls] = useState<string[]>([]);
+
+    const settings = {
+        dots: false,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1
+    };
+
 
     const earthDate = dayjs(date).format('YYYY-M-D');
     console.log("DATE:",date);
@@ -100,18 +110,20 @@ export default function ProfilePage() {
                         <h2>Welcome to your Mars profile</h2>
                         <img  id= "profile-astronaut-picture"src="https://static.vecteezy.com/system/resources/previews/012/318/301/original/cute-astronaut-with-peaceful-hands-sitting-on-rocket-astronaut-icon-concept-flat-cartoon-style-suitable-for-web-landing-page-banner-flyer-sticker-card-vector.jpg"/>
 
-                        Name: {name}
-                        Age: {marsAge}
-                        
-                        <p>Did you know you would weigh 2.5 X less on Mars? This is because the gravity is weaker on Mars than on Earth as it is smaller!</p>
+                        <h3><strong>Name:</strong> {name}</h3>
+                        <h3><strong>Age on Earth:</strong> {age}</h3>
+                        <h3><strong>Age on Mars:</strong> {marsAge}</h3> <p>Did you know you would weigh 2.5 X less on Mars? This is because the gravity is weaker on Mars than on Earth as it is smaller!</p>
                         <p>On Earth you are <strong>{age} years old </strong>, but on Mars you would only be <strong>{marsAge} years old.</strong> This is because 1 year on Mars is roughly twice that on Earth. </p>
                     </div>
 
                     <div className="profile-rover-photos">
-                        {roverPhotoUrls.length === 0 ? ( <h3> No photos available</h3>) : 
+                        <Slider {...settings}>
+                            {roverPhotoUrls.length === 0 ? ( <h3> No photos available</h3>) : 
                             roverPhotoUrls.map((photo:string) => 
                             <img src={photo}/>
                         )}
+                        </Slider>
+                        
                     </div>
                 </div>
             )}
