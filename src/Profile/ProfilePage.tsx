@@ -1,5 +1,4 @@
 import React from "react";
-import { useEffect } from "react";
 import { useState } from 'react';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -21,7 +20,8 @@ export default function ProfilePage() {
     const [date, setDate] = useState<Date | null>(new Date());
     const [showProfile, setShowProfile] =useState<boolean>(false)
     const [roverPhotoUrls, setRoverPhotoUrls] = useState<string[]>([]);
-
+    const [message, setMessage] = useState<string>("These are the photos taken by the 'Curiosity' Rover on your birthday!");
+    const curiosityStartDate = new Date("2012-08-06");
     const settings = {
         dots: false,
         infinite: false,
@@ -31,19 +31,21 @@ export default function ProfilePage() {
     };
 
 
-    const earthDate = dayjs(date).format('YYYY-M-D');
-    console.log("DATE:",date);
-    console.log("EARTHDATE",earthDate);
+    // const earthDate = dayjs(date).format('YYYY-M-D');
+
+
     const handleClick = () => {
         setShowProfile(true)
+        let earthDate = dayjs(date).format('YYYY-M-D')
         console.log(`Name: ${name}, Date: ${earthDate}`);
-         const curiosityStartDate = new Date("2012-08-06");
-         if (date && date >= curiosityStartDate) {
+        //  if (date && date >= curiosityStartDate) {
              getRoverPhotos().then(roverPhotos => setRoverPhotoUrls(roverPhotos));
-         } else {
-             setRoverPhotoUrls([]);
-        }
+
+        //  } else {
+        //      setRoverPhotoUrls([]);
+        // }
     };
+
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
                 setName(event.target.value);
@@ -63,7 +65,17 @@ export default function ProfilePage() {
     const age = date ? calculateAge(date) : 0;
     const marsAge = Math.round(age / 1.88);
      
+    
     async function getRoverPhotos (): Promise<string[]> {
+          let earthDate = dayjs(date).format('YYYY-M-D');
+        if (date && date < curiosityStartDate) {
+
+            earthDate = dayjs(curiosityStartDate).format('YYYY-M-D')
+           
+            setMessage('Uh Oh! You\'re older than the Curiosity Rover, so there are no photos available. Here are the first images taken by the Curiosity Rover.')
+        } else {
+            earthDate = dayjs(date).format('YYYY-M-D');
+        }
         const fetchImages = await fetch (`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${earthDate}&api_key=${API_KEY}`)
         console.log(fetchImages);
         const imagesData = await fetchImages.json();
@@ -72,17 +84,14 @@ export default function ProfilePage() {
         if (imagesData.photos.length !== 0) {
             for (let i = 0; i < roverPhotoCarouselLength; i++)
            roverPhotos.push(imagesData.photos[i].img_src);
+        } else {
+            setMessage("Sorry, there are no available photos on your birthday! Try a different day.")
         }
         return roverPhotos;
     }
 
-    //  useEffect(() => {
-    //         getRoverPhotos()
-    //         .then(roverPhotos => setRoverPhotoUrls(roverPhotos))
-            
-    // //     }, []
-    // )
     
+
     return (
         <div className="mars-profile-page">
             <div className="profile-input-section">
@@ -118,12 +127,12 @@ export default function ProfilePage() {
 
                     <div className="profile-rover-photos">
                         <Slider {...settings}>
-                            {roverPhotoUrls.length === 0 ? ( <h3> No photos available</h3>) : 
+                            {roverPhotoUrls.length === 0 ? ( <h3></h3>) : 
                             roverPhotoUrls.map((photo:string) => 
                             <img src={photo}/>
                         )}
                         </Slider>
-                        <p>These are the photos taken by the 'Curiosity' Rover on your birthday!</p>
+                        <p>{message}</p>
                     </div>
                 </div>
             )}

@@ -1,24 +1,15 @@
-//@use 'constants';
+@import '../Styles/GlobalStyles.scss';
 
 
 body {
-    background-color: #062356;
-    color: #fffff2;
-    font-family: public-sans;
+    background-color: $blueBackground;
+    color: $whiteFontColor;
+    font-family: $PublicSans;
 }
 
-.mars-profile-page {
-    border: 2px red solid;
- //   background-color: #062356;
-}
-
-.profile-input-section {
-    border: 2px green solid;
-}
 
 .input-field{
     display: flex;
-    border: 2px lightcoral solid;
     justify-content: center;
     align-items: center;
     p{
@@ -39,11 +30,11 @@ body {
 .pop-up-profile-section{
     display: flex;
     flex-direction: column;
-    border: 3px red solid;
     background-color: #EE8434;
     width: 80%;
     justify-self: center;
     justify-content: center;
+    font-family: $MartianMono;
     #profile-astronaut-picture{
         width: 100px;
         height: auto;
@@ -52,12 +43,10 @@ body {
 }
 
 .profile-information{
-    border: 2px lightblue solid;
     line-height: 25px;
 }
 
 .profile-rover-photos{
-    border: 2px purple solid;
     width: 50%;
     height: auto;
     justify-content: center;
