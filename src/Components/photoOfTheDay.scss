@@ -44,8 +44,16 @@ $general-font: "Public Sans";
     text-align: center;
 }
 
+#button-container{
+    display: flex;
+    align-items: center;
+    width: auto;
+}
+
 #random-button{
     margin: auto;
     color: $text-color;
     background-color: #EE8434;
+    border-radius: 25px;
+    box-shadow: 1px 1px $button-grey;
 }

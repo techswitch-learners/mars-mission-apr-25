@@ -51,8 +51,7 @@ export default function PhotoOfTheDay() {
       {" "}
       <link
         href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet"
-      ></link>
+        rel="stylesheet"></link>
       <div className="photoOfTheDayContainer">
         <img
           src={photo}
@@ -61,10 +60,10 @@ export default function PhotoOfTheDay() {
           alt={title}
         />
       </div>
-      <div>
+      <div className="photoTitle">Astronomy Photo of the Day</div>
+      <div id="button-container">
         <button id="random-button">Different Photo?</button>
       </div>
-      <div className="photoTitle">Astronomy Photo of the Day</div>
       <div className="explanation">{explanation}</div>
     </div>
   );
