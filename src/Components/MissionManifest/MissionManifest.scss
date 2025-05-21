@@ -1,14 +1,15 @@
 @use "../../App.scss" as AppCSS;
-@import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100..800&display=swap');
+@import "../../Styles/GlobalStyles.scss";
 
 body{
-    background-color: #062356;
+    background-color: $blueBackground;
 }
 #mission-manifest-container {
-    font-family: "Martian Mono", monospace;
+    font-family: $MartianMono;
     width: 40vw;
     margin: 40px auto;
-    background-color: #E4965B;
+    background-color: $orangeBackground;
+    color: black;
     h2 {
         font-weight: 900;
     }
