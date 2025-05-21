@@ -18,23 +18,27 @@ type manifestData = {
     totalPhotos: number
 }
 
+const rovers = ['curiosity', 'opportunity', 'spirit'];
+
 function MissionManifest(props: RoverType) {
     const apiKey = process.env.REACT_APP_API_KEY;
     const [manifestData, setManifestData] = useState({} as manifestData);
 
     useEffect(() => {
-        fetch(`https://api.nasa.gov/mars-photos/api/v1/manifests/${props.roverName}?api_key=${apiKey}`).then(response => response.json()).then((response) => {
-        let data = response.photo_manifest;
-        setManifestData({
-                name: data.name,
-                landingDate: data.landing_date,
-                launchDate: data.launch_date,
-                status: data.status,
-                maxSol: data.max_sol,
-                maxDate: data.max_date,
-                totalPhotos: data.total_photos
-        })
-        });
+        if (rovers.includes(props.roverName.toLowerCase())) {
+            fetch(`https://api.nasa.gov/mars-photos/api/v1/manifests/${props.roverName}?api_key=${apiKey}`).then(response => response.json()).then((response) => {
+            let data = response.photo_manifest;
+            setManifestData({
+                    name: data.name,
+                    landingDate: data.landing_date,
+                    launchDate: data.launch_date,
+                    status: data.status,
+                    maxSol: data.max_sol,
+                    maxDate: data.max_date,
+                    totalPhotos: data.total_photos
+            })
+            });
+        } 
     }, [props.roverName]);
 
 
@@ -46,19 +50,19 @@ function MissionManifest(props: RoverType) {
             <h2>MISSION MANIFEST</h2>
             <div id='rover-mission-info-container'>
                 <p className='manifest-fieldname'>Rover Name: </p>
-                <p>{manifestData.name}</p>
+                <p>{manifestData.name ?? "N/A"}</p>
                 <p className='manifest-fieldname'>Landing Date: </p>
-                <p>{manifestData.landingDate}</p>
+                <p>{manifestData.landingDate ?? "N/A"}</p>
                 <p className='manifest-fieldname'>Launch Date: </p>
-                <p>{manifestData.launchDate}</p>
+                <p>{manifestData.launchDate ?? "N/A"}</p>
                 <p className='manifest-fieldname'>Status: </p>
-                <p>{manifestData.status}</p>
+                <p>{manifestData.status ?? "N/A"}</p>
                 <p className='manifest-fieldname'>Max Sol: </p>
-                <p>{manifestData.maxSol}</p>
+                <p>{manifestData.maxSol ?? "N/A"}</p>
                 <p className='manifest-fieldname'>Max Date: </p>
-                <p>{manifestData.maxDate}</p>
+                <p>{manifestData.maxDate ?? "N/A"}</p>
                 <p className='manifest-fieldname'>Total photos: </p>
-                <p>{manifestData.totalPhotos}</p>
+                <p>{manifestData.totalPhotos ?? "N/A"}</p>
             </div>
         </div>
     )
