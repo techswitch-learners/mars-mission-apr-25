@@ -7,7 +7,7 @@ import { format } from "path";
 import './profilePage.scss';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import Slider from "react-slick";
 
 
     const API_KEY = "qUubKrhKBBrb0M4uQISHm089PavbKEcLW3v7tgiP";
