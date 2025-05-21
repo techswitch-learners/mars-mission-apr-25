@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import './RoverImages.scss';
 import { RotatingLines } from "react-loader-spinner";
 
-type RoverResponse = {
+export type RoverResponse = {
     id: number,
     img_src: string
 }
@@ -16,11 +16,12 @@ const api = 'fCp5fNsscdDmov0Vw4lpU4bOkdMTCuCA9tnoKgYH'
 
 function RoverImages(props: { name: string }) {
     const [roverResponse, setRoverResponse] = useState<RoverResponse[]>();
-    const [latestPhotoDate, setLatestPhotoDate] = useState<string>("");
+    //const [latestPhotoDate, setLatestPhotoDate] = useState<string>("");
     const [latestCameras, setLatestCameras] = useState<[]>();
     const [isLoading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string>("");
 
+    const altText = `Photo taken by the Mars Rover ${props.name}`
     const settings = {
         dots: false,
         infinite: false,
@@ -36,7 +37,7 @@ function RoverImages(props: { name: string }) {
         const manifestResponse = await fetch(`https://api.nasa.gov/mars-photos/api/v1/manifests/${props.name}?api_key=${api}`);
         const manifestData = await manifestResponse.json();
         console.log(manifestData)
-        setLatestPhotoDate(manifestData.photo_manifest.max_date);
+        //setLatestPhotoDate(manifestData.photo_manifest.max_date);
         setLatestCameras(manifestData.photo_manifest.photos[manifestData.photo_manifest.photos.length - 1].cameras);
 
         const photoResponse = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/${props.name}/photos?earth_date=${manifestData.photo_manifest.max_date}&api_key=${api}`);
@@ -80,7 +81,7 @@ function RoverImages(props: { name: string }) {
             <div className="sliderContainer">
                 <Slider {...settings}>
                 {roverResponse.map((image) => (
-                    <img key={image.id} src={image.img_src} />
+                    <img key={image.id} src={image.img_src} alt={altText}/>
                 ))}
                 </Slider>
             </div>

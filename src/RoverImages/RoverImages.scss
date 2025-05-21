@@ -4,7 +4,7 @@ body {
 }
 
 .sliderContainer {
-  max-width: 60%;
+  max-width: 30%;
   margin: auto;
   padding: 40px;
 }
@@ -12,4 +12,17 @@ body {
 .error {
   text-align: center;
   font-size: 50px;
+}
+
+
+@media screen and (max-width: 1000px) {
+  .sliderContainer {
+    max-width: 60%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .sliderContainer {
+    max-width: 80%;
+  }
 }
