@@ -1,10 +1,13 @@
 @use "../App.scss" as AppCSS;
 @import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100..800&display=swap');
 
+body{
+    background-color: #062356;
+}
 #mission-manifest-container {
     font-family: "Martian Mono", monospace;
     width: 40vw;
-    margin: 0 auto;
+    margin: 40px auto;
     background-color: #E4965B;
     h2 {
         font-weight: 900;
@@ -25,4 +28,55 @@
 }
 .manifest-fieldname{
     font-weight: 900;
+}
+
+// Media Queries 
+
+@media(max-width: 898px) {
+    #mission-manifest-container {
+    width: 50vw;
+    padding: 12px 20px 22px 20px;
+
+    h2{
+        font-size: 1.3rem;
+    }
+ }
+ #rover-mission-info-container p {
+    font-size: 0.7rem;
+ }
+}
+
+@media(max-width: 656px) {
+    #mission-manifest-container {
+    width: 60vw;
+    padding: 12px 20px 22px 20px;
+
+    h2{
+        font-size: 1.3rem;
+    }
+ }
+ #rover-mission-info-container p {
+    font-size: 0.7rem;
+ }
+}
+
+@media(max-width: 320px) {
+    #mission-manifest-container {
+    width: 70vw;
+    padding: 12px 20px 22px 20px;
+
+    h2{
+        font-size: 1.3rem;
+    }
+ }
+ #rover-mission-info-container p {
+    font-size: 0.7rem;
+ }
+}
+
+@media(max-width: 507px) {
+    #rover-mission-info-container p {
+        display: flex;
+        align-items: center;
+    }
 }
