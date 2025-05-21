@@ -1,0 +1,19 @@
+
+ .photoOfTheDayContainer{
+     display: flex;
+     justify-content: center; 
+ }
+
+.photo-of-the-day {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: auto;
+    border: 2px blue solid;
+    height: 50vh;
+}
+
+.explanation {
+    width: 70%;
+    margin: auto;
+}

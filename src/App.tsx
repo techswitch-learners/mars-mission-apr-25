@@ -1,7 +1,8 @@
 import React from "react";
 import "./App.scss";
 import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
-import PhotoOfTheDay from './photo-of-the-day/photoOfTheDay'
+import PhotoOfTheDay from './Components/photoOfTheDay'
+
 
 function App() {
   return (
