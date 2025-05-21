@@ -8,10 +8,10 @@ export default function PhotoOfTheDay () {
     const [photo, setPhoto] = useState<string>()
     const [title, setTitle] = useState<string>()
     const [explanation,setExplanation] = useState<string>()
-    //const [photoAddress, setPhotoAddress] = useState("https://api.nasa.gov/planetary/apod?date=2025-05-19&api_key=5s0C1UhCZLh3WVVN2kGzF1kEw76CImpsBBf3AvEy")
+   
 
     const fallBackImageDates = ["2025-05-08" , "2025-05-13", "2025-04-24" , "2025-03-26" , "2025-04-13" , "2025-03-23" , "2025-01-15" , "2024-11-10" , "2024-03-22" , "2023-08-10"]
-    const photoAddress = "https://api.nasa.gov/planetary/apod?date=2025-05-21&api_key=5s0C1UhCZLh3WVVN2kGzF1kEw76CImpsBBf3AvEy"
+    const photoAddress = "https://api.nasa.gov/planetary/apod?&api_key=5s0C1UhCZLh3WVVN2kGzF1kEw76CImpsBBf3AvEy"
 
     useEffect (() => {
         fetch(photoAddress)
@@ -25,7 +25,7 @@ export default function PhotoOfTheDay () {
                 else {
                     const randomFromZeroToNine = Math.floor(Math.random() * 10);
                     const altPhotoAddress = `https://api.nasa.gov/planetary/apod?date=${fallBackImageDates[randomFromZeroToNine]}&api_key=5s0C1UhCZLh3WVVN2kGzF1kEw76CImpsBBf3AvEy`
-                    //setPhotoAddress(altPhotoAddress);
+          
                     fetch(altPhotoAddress)
                     .then(response => response.json())
                     .then(data => {
@@ -40,11 +40,12 @@ export default function PhotoOfTheDay () {
         },[]);
         
 return ( 
-<div>   
+<div> <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"></link>  
         <div className="photoOfTheDayContainer">
             <img src={photo} className="photo-of-the-day" width="100%" alt-text={title}/>
             
         </div>
+        <div className="explanation">Astronomy Photo of the Day</div>
         <div className="explanation">
         {/* {explanation} */}
         </div>

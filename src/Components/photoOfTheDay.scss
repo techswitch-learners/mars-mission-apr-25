@@ -1,19 +1,36 @@
+ $background-color: #062356;
+ $text-color: #FFFFF2;
+ $lighter-orange: #EE8434;
+ $button-grey: #878888;
+$general-font: "Public Sans";
+
+ body {
+    background-color: $background-color;
+    font-family: $general-font
+ }
 
  .photoOfTheDayContainer{
      display: flex;
      justify-content: center; 
+     background-color: $background-color;
+     
  }
 
 .photo-of-the-day {
     display: flex;
     justify-content: center;
-    width: 100%;
+    width: auto;
     margin: auto;
-    border: 2px blue solid;
     height: 50vh;
+    object-fit: contain;
+    margin: 2vw;
+
 }
 
 .explanation {
     width: 70%;
     margin: auto;
+    color: $text-color;
+    padding: 5px;
+    text-align: center;
 }
