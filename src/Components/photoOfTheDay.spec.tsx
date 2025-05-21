@@ -35,7 +35,7 @@ describe (PhotoOfTheDay, ()=>{
         render(<PhotoOfTheDay/>)
         const testImage = document.querySelector("img") as HTMLImageElement;
         await waitFor(() => {
-        expect(testImage).toBeInTheDocument;
-})})
+        expect(testImage).toBeInTheDocument();}
+)})
 
     })
