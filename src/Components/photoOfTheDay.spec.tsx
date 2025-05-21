@@ -1,8 +1,7 @@
 import '@testing-library/jest-dom';
 import PhotoOfTheDay from './photoOfTheDay'
-import App from '../App'
 import { render, waitFor } from '@testing-library/react';
-
+import React from 'react';
 
 describe (PhotoOfTheDay, ()=>{
 
@@ -37,7 +36,6 @@ describe (PhotoOfTheDay, ()=>{
         const testImage = document.querySelector("img") as HTMLImageElement;
         await waitFor(() => {
         expect(testImage).toBeInTheDocument;
-    
 })})
 
     })
