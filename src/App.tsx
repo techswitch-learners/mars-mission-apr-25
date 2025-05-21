@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.scss";
 import { Link, Route, BrowserRouter as Router, Routes } from "react-router";
-import ProfilePage from "./Profile/ProfilePage";
+import ProfilePage from "./components/ProfilePage";
 
 function App() {
   return (
