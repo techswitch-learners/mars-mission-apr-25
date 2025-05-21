@@ -61,6 +61,9 @@ export default function PhotoOfTheDay() {
           alt={title}
         />
       </div>
+      <div>
+        <button id="random-button">Different Photo?</button>
+      </div>
       <div className="photoTitle">Astronomy Photo of the Day</div>
       <div className="explanation">{explanation}</div>
     </div>
