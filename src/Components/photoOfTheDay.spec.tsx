@@ -41,22 +41,3 @@ describe (PhotoOfTheDay, ()=>{
 })})
 
     })
-
-//     describe (PhotoOfTheDay, ()=>{
-
-//      it ("Should render fallback image", async ()=>{
-//         global.fetch = jest.fn(() =>
-//         Promise.resolve(
-//         new Response(
-//         JSON.stringify({
-//         title: "Astronomy Picture of the Day",
-//         explanation: "An amazing view of the International Space Station transiting the Sun.",
-//       })
-//     )))
-//         render(<PhotoOfTheDay/>)
-//         const testImage = document.querySelector("img") as HTMLImageElement;
-//         await waitFor(() => {
-//         expect(testImage).toBeInTheDocument;
-    
-// })})
-//     })

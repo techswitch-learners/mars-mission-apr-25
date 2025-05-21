@@ -33,4 +33,13 @@ $general-font: "Public Sans";
     color: $text-color;
     padding: 5px;
     text-align: center;
+    display: none;
+}
+
+.photoTitle {
+    width: 70%;
+    margin: auto;
+    color: $text-color;
+    padding: 5px;
+    text-align: center;
 }
