@@ -123,7 +123,7 @@ export default function ProfilePage() {
                             <img src={photo}/>
                         )}
                         </Slider>
-                        
+                        <p>These are the photos taken by the 'Curiosity' Rover on your birthday!</p>
                     </div>
                 </div>
             )}
