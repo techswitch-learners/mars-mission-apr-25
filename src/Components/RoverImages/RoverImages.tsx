@@ -4,14 +4,14 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./RoverImages.scss";
 import { ClipLoader } from "react-spinners";
-import { rovers, MissionManifestProps } from "../RoverDetails/RoverDetails";
+import { MissionManifestProps } from "../RoverDetails/RoverDetails";
 
 type RoverResponse = {
   id: number;
   img_src: string;
 };
 
-const api = "fCp5fNsscdDmov0Vw4lpU4bOkdMTCuCA9tnoKgYH";
+const apiKey = process.env.REACT_APP_API_KEY;
 
 function RoverImages(props: MissionManifestProps) {
   const [roverResponse, setRoverResponse] = useState<RoverResponse[]>();
@@ -39,12 +39,12 @@ function RoverImages(props: MissionManifestProps) {
       try {
         setLoading(true);
         const manifestResponse = await fetch(
-          `https://api.nasa.gov/mars-photos/api/v1/manifests/${props.roverType}?api_key=${api}`,
+          `https://api.nasa.gov/mars-photos/api/v1/manifests/${props.roverType}?api_key=${apiKey}`,
         );
         const manifestData = await manifestResponse.json();
 
         const photoResponse = await fetch(
-          `https://api.nasa.gov/mars-photos/api/v1/rovers/${props.roverType}/photos?earth_date=${manifestData.photo_manifest.max_date}&api_key=${api}`,
+          `https://api.nasa.gov/mars-photos/api/v1/rovers/${props.roverType}/photos?earth_date=${manifestData.photo_manifest.max_date}&api_key=${apiKey}`,
         );
         const photoData = await photoResponse.json();
 

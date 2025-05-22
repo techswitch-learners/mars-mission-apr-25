@@ -3,7 +3,6 @@ import { fireEvent, render, waitFor } from "@testing-library/react";
 import RoverImages from "./RoverImages";
 import { rovers } from "../RoverDetails/RoverDetails";
 
-
 const photo_mock_data = {
   photos: [
     {

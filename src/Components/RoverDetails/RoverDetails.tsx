@@ -78,7 +78,7 @@ function RoverDetails() {
         </button>
       </div>
       <MissionManifest roverType={rover} />
-      <RoverImages roverType={rover}/>
+      <RoverImages roverType={rover} />
     </div>
   );
 }
