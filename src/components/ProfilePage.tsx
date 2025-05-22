@@ -71,7 +71,7 @@ export default function ProfilePage() {
         roverPhotos.push(imagesData.photos[i].img_src);
     } else {
       setMessage(
-        "The date of the first pictures taken by the Curiosity Rover is 06/08/2012" ,
+        "The date of the first pictures taken by the Curiosity Rover is 06/08/2012",
       );
     }
     return roverPhotos;
@@ -155,7 +155,8 @@ export default function ProfilePage() {
             <Slider {...settings}>
               {roverPhotoUrls.length === 0 ? (
                 <p>
-                  Sorry, there are no available photos on your birthday! Try a different day.
+                  Sorry there are no available photos on your birthday, try a
+                  different day.
                 </p>
               ) : (
                 roverPhotoUrls.map((photo: string, index) => (
