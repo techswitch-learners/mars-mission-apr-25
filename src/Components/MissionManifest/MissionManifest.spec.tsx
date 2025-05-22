@@ -1,6 +1,5 @@
 import React from "react";
-import { getByText, render, screen, waitFor } from "@testing-library/react";
-import App from "../../App";
+import { render, screen } from "@testing-library/react";
 import MissionManifest, { rovers } from "./MissionManifest";
 
 const mockManifestResponse = {
@@ -60,10 +59,7 @@ test("opportunity rover renders correct p elements", async () => {
 test("opportunity rover renders correct Heading", async () => {
   render(<MissionManifest roverType={rovers.OPPORTUNITY} />);
 
-  const missionManifestContainer = await screen.findByTestId(
-    "mission-manifest-container",
-  );
-  const heading = screen.getByText("MISSION MANIFEST");
+  const heading = await screen.findByText("MISSION MANIFEST");
 
   expect(heading).toBeInTheDocument();
 });

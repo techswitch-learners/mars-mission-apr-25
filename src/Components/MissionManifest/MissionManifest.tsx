@@ -1,7 +1,6 @@
+import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import { config } from "dotenv";
-import { json } from "stream/consumers";
 import "./MissionManifest.scss";
 
 export enum rovers {
