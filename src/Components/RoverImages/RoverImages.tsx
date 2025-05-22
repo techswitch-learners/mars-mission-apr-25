@@ -10,12 +10,16 @@ type RoverResponse = {
   img_src: string;
 };
 
+type Cameras = Array<string>;
+
 const api = "fCp5fNsscdDmov0Vw4lpU4bOkdMTCuCA9tnoKgYH";
 
 function RoverImages(props: { name: string }) {
   const [roverResponse, setRoverResponse] = useState<RoverResponse[]>();
   const [error, setError] = useState<string>("");
   const [isLoading, setLoading] = useState<boolean>(false);
+  const [latestCameras, setLatestCameras] = useState<Cameras>();
+  const [selectedValue, setSelectedValue] = useState<string>("");
 
   const altText = `Photo taken by the Mars Rover ${props.name}`;
 
@@ -41,14 +45,29 @@ function RoverImages(props: { name: string }) {
           `https://api.nasa.gov/mars-photos/api/v1/manifests/${props.name}?api_key=${api}`,
         );
         const manifestData = await manifestResponse.json();
-
-        const photoResponse = await fetch(
-          `https://api.nasa.gov/mars-photos/api/v1/rovers/${props.name}/photos?earth_date=${manifestData.photo_manifest.max_date}&api_key=${api}`,
+        setLatestCameras(
+          manifestData.photo_manifest.photos[
+            manifestData.photo_manifest.photos.length - 1
+          ].cameras,
         );
-        const photoData = await photoResponse.json();
 
-        setRoverResponse(photoData.photos);
-        setLoading(false);
+        if (!selectedValue) {
+          setLoading(true);
+          const photoResponse = await fetch(
+            `https://api.nasa.gov/mars-photos/api/v1/rovers/${props.name}/photos?earth_date=${manifestData.photo_manifest.max_date}&api_key=${api}`,
+          );
+          const photoData = await photoResponse.json();
+          setRoverResponse(photoData.photos);
+          setLoading(false);
+        } else {
+          setLoading(true);
+          const photoResponse = await fetch(
+            `https://api.nasa.gov/mars-photos/api/v1/rovers/${props.name}/photos?earth_date=${manifestData.photo_manifest.max_date}&camera=${selectedValue}&api_key=${api}`,
+          );
+          const photoData = await photoResponse.json();
+          setRoverResponse(photoData.photos);
+          setLoading(false);
+        }
       } catch (error) {
         setLoading(false);
         setError(
@@ -58,7 +77,11 @@ function RoverImages(props: { name: string }) {
     };
 
     fetchData();
-  }, [props.name]);
+  }, [props.name, selectedValue]);
+
+  const handleChange: React.ChangeEventHandler<HTMLSelectElement> = (e) => {
+    setSelectedValue(e.target.value);
+  };
 
   if (error) {
     return (
@@ -90,6 +113,13 @@ function RoverImages(props: { name: string }) {
             <img key={image.id} src={image.img_src} alt={altText} />
           ))}
         </Slider>
+        <select id="dropdown" value={selectedValue} onChange={handleChange}>
+          {latestCameras?.map((camera, index) => (
+            <option key={index} value={camera}>
+              {camera}
+            </option>
+          ))}
+        </select>
       </div>
     );
   }

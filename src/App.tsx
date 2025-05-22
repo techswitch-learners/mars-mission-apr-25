@@ -1,15 +1,17 @@
 import React from "react";
 import "./App.scss";
 import { Link, Route, BrowserRouter as Router, Routes } from "react-router";
-import ProfilePage from "./components/ProfilePage";
-import PhotoOfTheDay from "./Components/photoOfTheDay/photoOfTheDay";
+// import ProfilePage from "./Components/ProfilePage";
+// import PhotoOfTheDay from "./Components/photoOfTheDay/photoOfTheDay";
+import RoverImages from "./Components/RoverImages/RoverImages";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<PhotoOfTheDay />} />
-        <Route path="/profile" element={<ProfilePage />} />
+        {/* <Route path="/" element={<PhotoOfTheDay />} />
+        <Route path="/profile" element={<ProfilePage />} /> */}
+        <Route path="/" element={<RoverImages name="curiosity" />} />
         <Route
           path="*"
           element={

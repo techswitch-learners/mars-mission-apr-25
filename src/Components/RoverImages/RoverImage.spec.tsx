@@ -15,17 +15,28 @@ const photo_mock_data = {
   ],
 };
 
+const photo_mock_data_cameras = {
+  photos: [
+    {
+      id: 1,
+      img_src: "https://mars.nasa.gov/3",
+    },
+  ],
+};
+
 const manifest_mock_data = {
   photo_manifest: {
     photos: [
       {
-        cameras: ["HAZ"],
+        cameras: ["HAZ", "CHEM"],
       },
     ],
   },
 };
 
-describe("Testing the rover image displayed on page load", () => {
+// const mock_cameras = ["HAZ", "CHEM"];
+
+describe("Rover Image Tests", () => {
   beforeEach(() => {
     global.fetch = jest
       .fn()
@@ -34,6 +45,9 @@ describe("Testing the rover image displayed on page load", () => {
       })
       .mockResolvedValueOnce({
         json: jest.fn().mockResolvedValue(photo_mock_data),
+      })
+      .mockResolvedValueOnce({
+        json: jest.fn().mockResolvedValue(photo_mock_data_cameras),
       });
   });
   test("Testing the rover image displayed on page load", async () => {
@@ -60,4 +74,41 @@ describe("Testing the rover image displayed on page load", () => {
       expect(firstTestImageDiv).toHaveAttribute("aria-hidden", "true");
     });
   });
+
+  //  test("Test the drop down values are updated when selected", async () => {
+  //     render(<RoverImages name="curiosity" />);
+  //     await waitFor(() => {
+  //        const dropdown = document.querySelector("select") as HTMLSelectElement;
+  //         //fireEvent.change(dropdown, { target: { value: mock_cameras[1] } });
+  //         fireEvent.click(dropdown);
+  //         const dropdownOptions = document.querySelectorAll('option');
+  //         console.log('options: ' + dropdownOptions[1].value);
+
+  //         fireEvent.click(dropdownOptions[1]);
+  //         expect(dropdown.value).toEqual(dropdownOptions[1].value);
+
+  //     });
+  //   });
+
+  // test("Test the images are updated when different values are selected from the dropdown", async () => {
+  //   render(<RoverImages name="curiosity" />);
+  //   await waitFor(() => {
+  //      const testImage = document.querySelector("img") as HTMLImageElement;
+  //      console.log(testImage);
+  //      const firstImageSourceUrl = testImage.src;
+  //      console.log(firstImageSourceUrl)
+  //      const dropdown = document.querySelector("select") as HTMLSelectElement;
+  //       //fireEvent.change(dropdown, { target: { value: mock_cameras[1] } });
+  //       fireEvent.click(dropdown);
+  //       const dropdownOptions = document.querySelectorAll('option');
+  //       console.log('options: ' + dropdownOptions[1].value);
+  //       fireEvent.click(dropdownOptions[1]);
+
+  //     // expect(dropdown.value).toBe(mock_cameras[1])
+  //     const updatedImage = document.querySelector("img") as HTMLImageElement;
+  //     const secondImageSourceUrl = updatedImage.src;
+  //     console.log(secondImageSourceUrl)
+  //     expect(firstImageSourceUrl).not.toEqual(secondImageSourceUrl);
+  //   });
+  // });
 });
