@@ -64,7 +64,7 @@ function RoverImages(props: { name: string }) {
     return (
       <div>
         <p className="error">
-          Sorry, there`&apos;`s been an error with the page, please try again
+          Sorry, there&apos;s been an error with the page, please try again
           later!
         </p>
       </div>
