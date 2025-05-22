@@ -36,14 +36,34 @@ body {
     justify-content: center;
     font-family: $MartianMono;
     #profile-astronaut-picture{
-        width: 300px;
+        width: 200px;
         height: auto;
-        border: black 2px solid;
+        border: black 3px solid;
+        // float: right;
+        // margin-right: 20px;
     }
 }
 
 .profile-information{
     line-height: 25px;
+    display: block;
+    // flex-direction: row;
+    // justify-content: space-between;
+}
+.side-by-side-information{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.name-and-age-profile{}
+
+.profile-fun-facts{
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .profile-rover-photos{

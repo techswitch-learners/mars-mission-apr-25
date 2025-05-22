@@ -22,14 +22,14 @@ function App() {
 
       <Router>
         <Routes>
-          <Route path="/Profile/ProfilePage" element={<ProfilePage />} />
+          <Route path="/profile" element={<ProfilePage />} />
           <Route
             path="*"
             element={
               <div>
                 Sorry, that page does not exist, try these:
                 <div>
-                  <Link to="/Profile/ProfilePage">Profile Page</Link>
+                  <Link to="/profile">Profile Page</Link>
                 </div>
               </div>
             }

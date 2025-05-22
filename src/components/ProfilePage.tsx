@@ -27,18 +27,9 @@ export default function ProfilePage() {
     slidesToScroll: 1,
   };
 
-  // const earthDate = dayjs(date).format('YYYY-M-D');
-
   const handleClick = () => {
     setShowProfile(true);
-    const earthDate = dayjs(date).format("YYYY-M-D");
-    console.log(`Name: ${name}, Date: ${earthDate}`);
-    //  if (date && date >= curiosityStartDate) {
     getRoverPhotos().then((roverPhotos) => setRoverPhotoUrls(roverPhotos));
-
-    //  } else {
-    //      setRoverPhotoUrls([]);
-    // }
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -72,7 +63,6 @@ export default function ProfilePage() {
     const fetchImages = await fetch(
       `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${earthDate}&api_key=${API_KEY}`,
     );
-    console.log(fetchImages);
     const imagesData = await fetchImages.json();
     const roverPhotos = [];
     const roverPhotoCarouselLength = Math.min(imagesData.photos.length, 25);
@@ -81,7 +71,7 @@ export default function ProfilePage() {
         roverPhotos.push(imagesData.photos[i].img_src);
     } else {
       setMessage(
-        "Sorry, there are no available photos on your birthday! Try a different day.",
+        "The date of the first pictures taken by the Curiosity Rover is 06/08/2012" ,
       );
     }
     return roverPhotos;
@@ -119,7 +109,7 @@ export default function ProfilePage() {
           className="profile-button-image"
           onClick={handleClick}
           src="https://www.pngall.com/wp-content/uploads/13/Mars-Planet-PNG-Cutout.png"
-          alt="clickable picture of mars"
+          alt="clickable button of mars"
         />
         <p id="build-your-profile-button-text">
           Click on Mars to build your profile!
@@ -129,19 +119,27 @@ export default function ProfilePage() {
         <div className="pop-up-profile-section">
           <div className="profile-information">
             <h2>Welcome to your Mars profile</h2>
-            <img
-              id="profile-astronaut-picture"
-              src="https://static.vecteezy.com/system/resources/previews/029/338/061/original/3d-cute-astronaut-riding-rocket-waving-hand-cartoon-on-a-transparent-background-free-png.png"
-            />
-            <h3>
-              <strong>Name:</strong> {name}
-            </h3>
-            <h3>
-              <strong>Age on Earth:</strong> {age}
-            </h3>
-            <h3>
-              <strong>Age on Mars:</strong> {marsAge}
-            </h3>{" "}
+            <div className="side-by-side-information">
+              <div className="name-and-age-profile">
+                <h3>
+                  <strong>Name:</strong> {name}
+                </h3>
+                <h3>
+                  <strong>Age on Earth:</strong> {age}
+                </h3>
+                <h3>
+                  <strong>Age on Mars:</strong> {marsAge}
+                </h3>
+              </div>
+              <img
+                id="profile-astronaut-picture"
+                alt="astronaut"
+                src="https://static.vecteezy.com/system/resources/previews/010/938/481/original/cute-astronaut-floating-space-cartoon-vector.jpg"
+              />
+            </div>
+          </div>
+
+          <div className="profile-fun-facts">
             <p>
               Did you know you would weigh 2.5x less on Mars? This is because
               the gravity is weaker on Mars than on Earth as it is smaller!
@@ -149,21 +147,23 @@ export default function ProfilePage() {
             <p>
               On Earth you are <strong>{age} years old </strong>, but on Mars
               you would only be <strong>{marsAge} years old.</strong> This is
-              because 1 year on Mars is roughly twice that on Earth.{" "}
+              because 1 year on Mars is roughly twice that on Earth.
             </p>
           </div>
 
           <div className="profile-rover-photos">
             <Slider {...settings}>
               {roverPhotoUrls.length === 0 ? (
-                <h3></h3>
+                <p>
+                  Sorry, there are no available photos on your birthday! Try a different day.
+                </p>
               ) : (
                 roverPhotoUrls.map((photo: string, index) => (
                   <img
                     className="rover-images-from-API"
                     src={photo}
                     key={index}
-                    alt="photo of Mars"
+                    alt="Mars"
                   />
                 ))
               )}

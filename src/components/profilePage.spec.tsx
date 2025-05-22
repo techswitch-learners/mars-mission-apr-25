@@ -8,7 +8,7 @@ describe("ProfilePage", () => {
     render(<ProfilePage />);
     const nameInputField = screen.getByLabelText(/Name:/i);
     fireEvent.change(nameInputField, { target: { value: "Beth" } });
-    fireEvent.click(screen.getByAltText(/clickable picture of mars/i));
+    fireEvent.click(screen.getByAltText(/clickable button of mars/i));
     expect(screen.getByText(/Beth/)).toBeInTheDocument();
   });
 
@@ -16,7 +16,7 @@ describe("ProfilePage", () => {
     render(<ProfilePage />);
     const datePicker = screen.getByPlaceholderText("Select your birthday");
     fireEvent.change(datePicker, { target: { value: "12/03/2016" } });
-    fireEvent.click(screen.getByAltText(/clickable picture of mars/i));
+    fireEvent.click(screen.getByAltText(/clickable button of mars/i));
     expect(
       screen.getByText(/Welcome to your Mars profile/),
     ).toBeInTheDocument();
@@ -31,7 +31,7 @@ describe("ProfilePage", () => {
     expect(
       screen.queryByText(/Welcome to your Mars profile/i),
     ).not.toBeInTheDocument();
-    fireEvent.click(screen.getByAltText(/clickable picture of mars/i));
+    fireEvent.click(screen.getByAltText(/clickable button of mars/i));
     await waitFor(() =>
       expect(
         screen.getByText(/Welcome to your Mars profile/),
@@ -45,7 +45,7 @@ describe("ProfilePage", () => {
     render(<ProfilePage />);
     const datePicker = screen.getByPlaceholderText("Select your birthday");
     fireEvent.change(datePicker, { target: { value: "12/03/2010" } });
-    fireEvent.click(screen.getByAltText(/clickable picture of mars/i));
+    fireEvent.click(screen.getByAltText(/clickable button of mars/i));
     await waitFor(() =>
       expect(
         screen.getByText(/Uh Oh! You're older than the Curiosity Rover/i),
@@ -68,10 +68,10 @@ describe("ProfilePage", () => {
     render(<ProfilePage />);
     const datePicker = screen.getByPlaceholderText("Select your birthday");
     fireEvent.change(datePicker, { target: { value: "03/06/2015" } });
-    fireEvent.click(screen.getByAltText(/clickable picture of mars/i));
+    fireEvent.click(screen.getByAltText(/clickable button of mars/i));
 
     const images = (await screen.findAllByAltText(
-      /photo of Mars/i,
+      /Mars/,
     )) as HTMLImageElement[];
     expect(images.length).toBeGreaterThan(0);
     const image = images[0] as HTMLImageElement;
