@@ -15,13 +15,25 @@
 .homeButton  {
     display: flex;
     flex-direction: column;
-    justify-items: center;
+    align-items: center;
 }
 
 .profilePageButton {
     display: flex;
     flex-direction: column;
-    justify-items: center;
+    align-items: center;
+  
+}
+
+#astroButton {
+    width: 5vw;
+    min-width: 40px;
+
+}
+
+#earthButton {
+    width: 5vw;
+    min-width: 40px;
 }
 
 a {

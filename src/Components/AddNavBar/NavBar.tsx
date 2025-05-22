@@ -1,7 +1,8 @@
 import React from "react";
 import "./NavBar.scss";
 import { Link } from "react-router";
-
+import imageAstro from "./Images/astronautcartoon.png";
+import imageEarth from "./Images/cartoon earth.png";
 
 export default function NavBar() {
   return (
@@ -10,15 +11,16 @@ export default function NavBar() {
         <nav className="navBarContainer">
           <div>
             <Link to="/" className="homeButton" id="homeLink">
-              <img src="./Images/Earth.avif" alt="cartoon earth illustration" />
+              <img src={imageEarth} alt="imageEarth" id="earthButton" />
               Home
             </Link>
           </div>
           <div>
             <Link to="profile" className="profilePageButton" id="profileLink">
               <img
-                src="./Images/Astro.avif"
+                src={imageAstro}
                 alt="cartoon astronaut illustration"
+                id="astroButton"
               />
               Profile
             </Link>
