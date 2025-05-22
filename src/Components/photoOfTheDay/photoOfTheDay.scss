@@ -1,0 +1,42 @@
+@import "../../Styles/GlobalStyles.scss";
+ 
+
+ body {
+    background-color: $blueBackground;
+    font-family: $PublicSans;
+ }
+
+ .photoOfTheDayContainer{
+     display: flex;
+     justify-content: center; 
+     background-color: $blueBackground;
+     
+ }
+
+.photo-of-the-day {
+    display: flex;
+    justify-content: center;
+    width: auto;
+    margin: auto;
+    height: 50vh;
+    object-fit: contain;
+    margin: 2vw;
+
+}
+
+.explanation {
+    width: 70%;
+    margin: auto;
+    color: $whiteFontColor;
+    padding: 5px;
+    text-align: center;
+    display: none;
+}
+
+.photoTitle {
+    width: 70%;
+    margin: auto;
+    color: $whiteFontColor;
+    padding: 5px;
+    text-align: center;
+}
