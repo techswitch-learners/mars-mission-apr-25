@@ -5,6 +5,7 @@ import spiritButton from "../../Assets/Images/spirit_button.png";
 import curiosityButton from "../../Assets/Images/curiosity_button.png";
 import opportunityButton from "../../Assets/Images/Opportunity_button.png";
 import "./RoverDetails.scss";
+import RoverImages from "../RoverImages/RoverImages";
 
 export enum rovers {
   CURIOSITY = "curiosity",
@@ -77,6 +78,7 @@ function RoverDetails() {
         </button>
       </div>
       <MissionManifest roverType={rover} />
+      <RoverImages roverType={rover}/>
     </div>
   );
 }

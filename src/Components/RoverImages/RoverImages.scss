@@ -4,9 +4,9 @@ body {
 }
 
 .sliderContainer {
-  max-width: 30%;
+  width: 42.5vw;
   margin: auto;
-  padding: 40px;
+  padding: 20px 40px 30px 40px;
 }
 
 .error {
@@ -15,14 +15,20 @@ body {
 }
 
 
-@media screen and (max-width: 1000px) {
+@media (max-width: 898px) {
   .sliderContainer {
-    max-width: 60%;
+    width: 55vw;
   }
 }
 
-@media screen and (max-width: 600px) {
+@media (max-width: 656px) {
   .sliderContainer {
-    max-width: 80%;
+    width: 65vw;
+  }
+}
+
+@media (max-width: 320px) {
+  .sliderContainer {
+    width: 70vw;
   }
 }
