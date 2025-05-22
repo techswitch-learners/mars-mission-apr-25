@@ -27,24 +27,20 @@
 
 #astroButton {
     width: 5vw;
-    min-width: 40px;
+    min-width: 50px;
 
 }
 
 #earthButton {
     width: 5vw;
-    min-width: 40px;
+    min-width: 50px;
+    
 }
 
 a {
     margin: 15px 10px 10px 10px;
-    // background: $greyBackground;
     color: $orangeBackground;
-    // background-color: $greyBackground;  
     padding: 2.5px 20px;
-    // text-align: center;
-    // text-decoration: none;
-    // display: inline-block;
     border: solid 2px $orangeBackground;
     text-decoration: none;
     border-radius: 25px;
