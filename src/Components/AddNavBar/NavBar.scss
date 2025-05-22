@@ -1,0 +1,34 @@
+@import "../../Styles/GlobalStyles.scss";
+
+ body {
+    background-color: $blueBackground;
+    font-family: $PublicSans;
+ }
+
+.navBarContainer {
+    display: flex;
+    background: $blueBackground;
+    justify-content: center;
+
+}
+
+a {
+    margin: 15px 10px 10px 10px;
+    background: $greyBackground;
+    color: $whiteFontColor;
+    background-color: $greyBackground;
+    box-shadow: 2px 2px $orangeBackground;
+    padding: 2.5px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 25px;
+}
+
+a:active {
+     box-shadow: 1px 1px $orangeBackground;
+}
+
+a:hover {
+    color: $orangeBackground
+}
