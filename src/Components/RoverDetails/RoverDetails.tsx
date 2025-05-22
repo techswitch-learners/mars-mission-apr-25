@@ -39,7 +39,9 @@ function RoverDetails() {
       <span id="scroll-message">Scroll to pick a rover!</span>
       <div id="rover-button-container" className="button-carousel">
         <button
-          className={rover === "spirit" ? "selected-rover" : "not-selected"}
+          className={
+            selectedRover === "spirit" ? "selected-rover" : "not-selected"
+          }
           id="spirit-button"
           key="spirit-button"
           onClick={() => handleClick("spirit-button")}
@@ -48,7 +50,9 @@ function RoverDetails() {
           <span>SPIRIT</span>
         </button>
         <button
-          className={rover === "curiosity" ? "selected-rover" : "not-selected"}
+          className={
+            selectedRover === "curiosity" ? "selected-rover" : "not-selected"
+          }
           id="curiosity-button"
           key="curiosity-button"
         >
@@ -60,7 +64,7 @@ function RoverDetails() {
         </button>
         <button
           className={
-            rover === "opportunity" ? "selected-rover" : "not-selected"
+            selectedRover === "opportunity" ? "selected-rover" : "not-selected"
           }
           id="opportunity-button"
           key="opportunity-button"
