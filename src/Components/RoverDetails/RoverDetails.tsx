@@ -36,6 +36,7 @@ function RoverDetails() {
   return (
     <div id="rover-information-container">
       <h2 id="rover-header">CHOOSE A ROVER</h2>
+      <span id="scroll-message">Scroll to pick a rover!</span>
       <div id="rover-button-container" className="button-carousel">
         <button
           className={rover === "spirit" ? "selected-rover" : "not-selected"}
