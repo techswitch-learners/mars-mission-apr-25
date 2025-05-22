@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.scss";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Link, Route, BrowserRouter as Router, Routes } from "react-router";
+import ProfilePage from "./components/ProfilePage";
 import PhotoOfTheDay from "./Components/photoOfTheDay/photoOfTheDay";
 
 function App() {
@@ -8,6 +9,18 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<PhotoOfTheDay />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route
+          path="*"
+          element={
+            <div>
+              Sorry, that page does not exist, try these:
+              <div>
+                <Link to="/profile">Profile Page</Link>
+              </div>
+            </div>
+          }
+        />
       </Routes>
     </Router>
   );
