@@ -20,7 +20,6 @@ describe(PhotoOfTheDay, () => {
     );
     render(<PhotoOfTheDay />);
     const testImage = document.querySelector("img") as HTMLImageElement;
-    //expect(component).toContain(testImage);
     await waitFor(() => {
       expect(testImage).toHaveAttribute(
         "src",
