@@ -1,6 +1,5 @@
 import React from "react";
-import { getByText, render, screen, waitFor } from "@testing-library/react";
-import App from "../../App";
+import { render, screen } from "@testing-library/react";
 import MissionManifest, { rovers } from "./MissionManifest";
 
 const mockManifestResponse = {
@@ -21,14 +20,13 @@ beforeEach(() => {
   });
 });
 
-// Ensures component renders a loading state before data arrives
 test("renders loading message on initial render", () => {
   render(<MissionManifest roverType={rovers.SPIRIT} />);
   expect(screen.getByText("Loading...")).toBeInTheDocument();
 });
 
 test("opportunity rover renders correct p elements", async () => {
-  render(<MissionManifest roverType={rovers.OPP} />);
+  render(<MissionManifest roverType={rovers.OPPORTUNIY} />);
   const expectedTexts = [
     "Rover Name: ",
     mockManifestResponse.photo_manifest.name,
@@ -59,12 +57,9 @@ test("opportunity rover renders correct p elements", async () => {
 });
 
 test("opportunity rover renders correct Heading", async () => {
-  render(<MissionManifest roverType={rovers.OPP} />);
+  render(<MissionManifest roverType={rovers.OPPORTUNIY} />);
 
-  const missionManifestContainer = await screen.findByTestId(
-    "mission-manifest-container",
-  );
-  const heading = screen.getByText("MISSION MANIFEST");
+  const heading = await screen.findByText("MISSION MANIFEST");
 
   expect(heading).toBeInTheDocument();
 });
@@ -85,7 +80,7 @@ test("invalid rover renders correct p elements", async () => {
     json: jest.fn().mockResolvedValue(mockInvalidFetchResponse),
   });
 
-  render(<MissionManifest roverType={rovers.OPP} />);
+  render(<MissionManifest roverType={rovers.OPPORTUNIY} />);
 
   const missionManifestContainer = await screen.findByTestId(
     "mission-manifest-container",

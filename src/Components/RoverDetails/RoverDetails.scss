@@ -1,0 +1,42 @@
+@import "../../Styles/GlobalStyles.scss";
+
+#rover-information-container {
+
+  #rover-header { 
+  color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  margin: 40px auto;
+  font-family: $MartianMono;
+  }
+}
+
+#rover-button-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 30vw;
+    font-family: $PublicSans;
+    button {
+        all: unset;
+        background: none;
+        padding:0;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        font-family: $PublicSans;
+        cursor: pointer;
+        span {
+            margin: 10px 0;
+            color: whitesmoke;
+        }
+        .selected-rover {
+            span {
+                text-decoration: underline;
+            }
+        } 
+    }
+    img {
+        width: 150px;
+    }
+}

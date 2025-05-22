@@ -1,14 +1,9 @@
 import React from "react";
 import "./App.scss";
-import { useState } from "react";
-import MissionManifest, {
-  rovers,
-} from "./Components/MissionManifest/MissionManifest";
+import RoverDetails from "./Components/RoverDetails/RoverDetails";
 
 function App() {
-  const [rover, setRover] = useState<rovers>(rovers.SPIRIT);
-
-  return <MissionManifest roverType={rover} />;
+  return <RoverDetails />;
 }
 
 export default App;
