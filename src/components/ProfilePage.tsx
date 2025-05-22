@@ -112,7 +112,7 @@ export default function ProfilePage() {
             maxDate={new Date()}
             showYearDropdown
             scrollableMonthYearDropdown
-            placeholderText = "Select your birthday"
+            placeholderText="Select your birthday"
           />
         </label>
         <img
@@ -159,7 +159,12 @@ export default function ProfilePage() {
                 <h3></h3>
               ) : (
                 roverPhotoUrls.map((photo: string, index) => (
-                  <img src={photo} key={index} alt="photo of Mars"/>
+                  <img
+                    className="rover-images-from-API"
+                    src={photo}
+                    key={index}
+                    alt="photo of Mars"
+                  />
                 ))
               )}
             </Slider>
