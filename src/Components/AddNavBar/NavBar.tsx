@@ -16,7 +16,7 @@ export default function NavBar() {
             </Link>
           </div>
           <div>
-            <Link to="profile" className="profilePageButton" id="profileLink">
+            <Link to="/profile" className="profilePageButton" id="profileLink">
               <img
                 src={imageAstro}
                 alt="cartoon astronaut illustration"
