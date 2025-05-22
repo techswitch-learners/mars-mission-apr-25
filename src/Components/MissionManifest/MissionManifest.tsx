@@ -6,7 +6,7 @@ import "./MissionManifest.scss";
 
 export enum rovers {
   CURIOSITY = "curiosity",
-  OPP = "opportunity",
+  OPPORTUNITY = "opportunity",
   SPIRIT = "spirit",
 }
 
@@ -14,7 +14,7 @@ export interface MissionManifestProps {
   roverType: rovers;
 }
 
-type manifestData = {
+type ManifestData = {
   name: string;
   landingDate: string;
   launchDate: string;
@@ -26,7 +26,7 @@ type manifestData = {
 
 function MissionManifest(props: MissionManifestProps) {
   const apiKey = process.env.REACT_APP_API_KEY;
-  const [manifestData, setManifestData] = useState<manifestData | null>(null);
+  const [manifestData, setManifestData] = useState<ManifestData | null>(null);
 
   useEffect(() => {
     fetch(

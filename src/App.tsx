@@ -6,9 +6,7 @@ import MissionManifest, {
 } from "./Components/MissionManifest/MissionManifest";
 
 function App() {
-  const [rover, setRover] = useState<rovers>(rovers.SPIRIT);
-
-  return <MissionManifest roverType={rover} />;
+  return <MissionManifest roverType={rovers.OPPORTUNITY} />;
 }
 
 export default App;

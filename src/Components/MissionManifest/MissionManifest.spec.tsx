@@ -21,14 +21,13 @@ beforeEach(() => {
   });
 });
 
-// Ensures component renders a loading state before data arrives
 test("renders loading message on initial render", () => {
   render(<MissionManifest roverType={rovers.SPIRIT} />);
   expect(screen.getByText("Loading...")).toBeInTheDocument();
 });
 
 test("opportunity rover renders correct p elements", async () => {
-  render(<MissionManifest roverType={rovers.OPP} />);
+  render(<MissionManifest roverType={rovers.OPPORTUNITY} />);
   const expectedTexts = [
     "Rover Name: ",
     mockManifestResponse.photo_manifest.name,
@@ -59,7 +58,7 @@ test("opportunity rover renders correct p elements", async () => {
 });
 
 test("opportunity rover renders correct Heading", async () => {
-  render(<MissionManifest roverType={rovers.OPP} />);
+  render(<MissionManifest roverType={rovers.OPPORTUNITY} />);
 
   const missionManifestContainer = await screen.findByTestId(
     "mission-manifest-container",
@@ -85,7 +84,7 @@ test("invalid rover renders correct p elements", async () => {
     json: jest.fn().mockResolvedValue(mockInvalidFetchResponse),
   });
 
-  render(<MissionManifest roverType={rovers.OPP} />);
+  render(<MissionManifest roverType={rovers.OPPORTUNITY} />);
 
   const missionManifestContainer = await screen.findByTestId(
     "mission-manifest-container",
