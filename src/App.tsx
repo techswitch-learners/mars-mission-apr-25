@@ -1,9 +1,8 @@
 import React from "react";
 import "./App.scss";
 import { Link, Route, BrowserRouter as Router, Routes } from "react-router";
-import ProfilePage from "./Components/ProfilePage";
 import PhotoOfTheDay from "./Components/photoOfTheDay/photoOfTheDay";
-import NavBar from "./Components/AddNavBar/NavBar";
+import ProfilePage from "./pages/Profile/ProfilePage";
 
 function App() {
   return (
