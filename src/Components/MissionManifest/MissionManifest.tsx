@@ -4,8 +4,14 @@ import { config } from 'dotenv';
 import { json } from 'stream/consumers';
 import "./MissionManifest.scss";
 
-type RoverType = {
-    roverName: string;
+export enum rovers {
+    CURIOSITY = 'curiosity',
+    OPP = 'opportunity',
+    SPIRIT = 'spirit'
+    };
+
+export interface MissionManifestProps {
+    roverType: rovers;
 } 
 
 type manifestData = {
@@ -18,15 +24,14 @@ type manifestData = {
     totalPhotos: number
 }
 
-const rovers = ['curiosity', 'opportunity', 'spirit'];
 
-function MissionManifest(props: RoverType) {
+
+function MissionManifest(props: MissionManifestProps) {
     const apiKey = process.env.REACT_APP_API_KEY;
-    const [manifestData, setManifestData] = useState({} as manifestData);
+    const [manifestData, setManifestData] = useState<manifestData | null>(null);
 
     useEffect(() => {
-        if (rovers.includes(props.roverName.toLowerCase())) {
-            fetch(`https://api.nasa.gov/mars-photos/api/v1/manifests/${props.roverName}?api_key=${apiKey}`).then(response => response.json()).then((response) => {
+            fetch(`https://api.nasa.gov/mars-photos/api/v1/manifests/${props.roverType}?api_key=${apiKey}`).then(response => response.json()).then((response) => {
             let data = response.photo_manifest;
             setManifestData({
                     name: data.name,
@@ -38,15 +43,14 @@ function MissionManifest(props: RoverType) {
                     totalPhotos: data.total_photos
             })
             });
-        } 
-    }, [props.roverName]);
+    }, [props.roverType]);
 
 
     if (!manifestData) {
         return <p>Loading...</p>
     } else {
     return (
-        <div id='mission-manifest-container'>
+        <div id='mission-manifest-container' data-testid="mission-manifest-container">
             <h2>MISSION MANIFEST</h2>
             <div id='rover-mission-info-container'>
                 <p className='manifest-fieldname'>Rover Name: </p>
