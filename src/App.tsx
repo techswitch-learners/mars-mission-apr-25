@@ -3,6 +3,7 @@ import "./App.scss";
 import { Link, Route, BrowserRouter as Router, Routes } from "react-router";
 import PhotoOfTheDay from "./Components/photoOfTheDay/photoOfTheDay";
 import ProfilePage from "./pages/Profile/ProfilePage";
+import NavBar from "./Components/AddNavBar/NavBar";
 
 function App() {
   return (
