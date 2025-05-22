@@ -1,18 +1,15 @@
- $background-color: #062356;
- $text-color: #FFFFF2;
- $lighter-orange: #EE8434;
- $button-grey: #878888;
-$general-font: "Public Sans";
+@import "../Styles/GlobalStyles.scss";
+ 
 
  body {
-    background-color: $background-color;
-    font-family: $general-font
+    background-color: $blueBackground;
+    font-family: $PublicSans;
  }
 
  .photoOfTheDayContainer{
      display: flex;
      justify-content: center; 
-     background-color: $background-color;
+     background-color: $blueBackground;
      
  }
 
@@ -30,7 +27,7 @@ $general-font: "Public Sans";
 .explanation {
     width: 70%;
     margin: auto;
-    color: $text-color;
+    color: $whiteFontColor;
     padding: 5px;
     text-align: center;
     display: none;
@@ -39,7 +36,7 @@ $general-font: "Public Sans";
 .photoTitle {
     width: 70%;
     margin: auto;
-    color: $text-color;
+    color: $whiteFontColor;
     padding: 5px;
     text-align: center;
 }
