@@ -6,7 +6,7 @@ import ProfilePage from "./components/ProfilePage";
 function App() {
   return (
     <div className="App">
-      {/* <header className="App-header">
+      <header className="App-header">
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
@@ -18,22 +18,24 @@ function App() {
         >
           Learn React
         </a>
-      </header> */}
+      </header>
 
       <Router>
         <Routes>
-          <Route path="/Profile/ProfilePage" 
-                 element={<ProfilePage/>}/>
-          <Route path="*" 
-                element ={<div>Sorry, that page doesn't exist, try these: 
-                  <div>
-                    <Link to ="/Profile/ProfilePage">Profile Page</Link>
-                    </div>
-                </div>}/>
+          <Route path="/Profile/ProfilePage" element={<ProfilePage />} />
+          <Route
+            path="*"
+            element={
+              <div>
+                Sorry, that page does not exist, try these:
+                <div>
+                  <Link to="/Profile/ProfilePage">Profile Page</Link>
+                </div>
+              </div>
+            }
+          />
         </Routes>
       </Router>
-
-
     </div>
   );
 }
