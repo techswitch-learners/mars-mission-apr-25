@@ -8,27 +8,45 @@
 .navBarContainer {
     display: flex;
     background: $blueBackground;
-    justify-content: center;
+    justify-content: space-between;
 
+}
+
+.homeButton  {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+}
+
+.profilePageButton {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
 }
 
 a {
     margin: 15px 10px 10px 10px;
-    background: $greyBackground;
-    color: $whiteFontColor;
-    background-color: $greyBackground;
-    box-shadow: 2px 2px $orangeBackground;
+    // background: $greyBackground;
+    color: $orangeBackground;
+    // background-color: $greyBackground;  
     padding: 2.5px 20px;
-    text-align: center;
+    // text-align: center;
+    // text-decoration: none;
+    // display: inline-block;
+    border: solid 2px $orangeBackground;
     text-decoration: none;
-    display: inline-block;
     border-radius: 25px;
 }
 
-a:active {
-     box-shadow: 1px 1px $orangeBackground;
-}
+
 
 a:hover {
-    color: $orangeBackground
+    
+    color: $whiteFontColor;
+    box-shadow: 0px 0px 3px 3px $greyBackground;
+}
+
+a:active {
+     box-shadow: none;
+     color: $orangeBackground;
 }
