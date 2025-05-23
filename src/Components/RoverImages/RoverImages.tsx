@@ -10,7 +10,7 @@ type RoverResponse = {
   img_src: string;
 };
 
-type Cameras = Array<string>;
+type Cameras = string[];
 
 const api = "fCp5fNsscdDmov0Vw4lpU4bOkdMTCuCA9tnoKgYH";
 
@@ -113,7 +113,11 @@ function RoverImages(props: { name: string }) {
             <img key={image.id} src={image.img_src} alt={altText} />
           ))}
         </Slider>
-        <select id="dropdown" value={selectedValue} onChange={handleChange}>
+        <select
+          id="cameraDropdown"
+          value={selectedValue}
+          onChange={handleChange}
+        >
           {latestCameras?.map((camera, index) => (
             <option key={index} value={camera}>
               {camera}

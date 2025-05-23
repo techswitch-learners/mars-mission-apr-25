@@ -19,6 +19,12 @@ const photo_mock_data_cameras = {
   photos: [
     {
       id: 1,
+      camera: {
+        id: 51,
+        name: "CHEMCAM_RMI",
+        rover_id: 5,
+        full_name: "CHEMCAM_RMI",
+      },
       img_src: "https://mars.nasa.gov/3",
     },
   ],
@@ -33,8 +39,6 @@ const manifest_mock_data = {
     ],
   },
 };
-
-// const mock_cameras = ["HAZ", "CHEM"];
 
 describe("Rover Image Tests", () => {
   beforeEach(() => {
@@ -75,40 +79,19 @@ describe("Rover Image Tests", () => {
     });
   });
 
-  //  test("Test the drop down values are updated when selected", async () => {
-  //     render(<RoverImages name="curiosity" />);
-  //     await waitFor(() => {
-  //        const dropdown = document.querySelector("select") as HTMLSelectElement;
-  //         //fireEvent.change(dropdown, { target: { value: mock_cameras[1] } });
-  //         fireEvent.click(dropdown);
-  //         const dropdownOptions = document.querySelectorAll('option');
-  //         console.log('options: ' + dropdownOptions[1].value);
-
-  //         fireEvent.click(dropdownOptions[1]);
-  //         expect(dropdown.value).toEqual(dropdownOptions[1].value);
-
-  //     });
-  //   });
-
-  // test("Test the images are updated when different values are selected from the dropdown", async () => {
-  //   render(<RoverImages name="curiosity" />);
-  //   await waitFor(() => {
-  //      const testImage = document.querySelector("img") as HTMLImageElement;
-  //      console.log(testImage);
-  //      const firstImageSourceUrl = testImage.src;
-  //      console.log(firstImageSourceUrl)
-  //      const dropdown = document.querySelector("select") as HTMLSelectElement;
-  //       //fireEvent.change(dropdown, { target: { value: mock_cameras[1] } });
-  //       fireEvent.click(dropdown);
-  //       const dropdownOptions = document.querySelectorAll('option');
-  //       console.log('options: ' + dropdownOptions[1].value);
-  //       fireEvent.click(dropdownOptions[1]);
-
-  //     // expect(dropdown.value).toBe(mock_cameras[1])
-  //     const updatedImage = document.querySelector("img") as HTMLImageElement;
-  //     const secondImageSourceUrl = updatedImage.src;
-  //     console.log(secondImageSourceUrl)
-  //     expect(firstImageSourceUrl).not.toEqual(secondImageSourceUrl);
-  //   });
-  // });
+  test("Test the drop down values are updated when selected", async () => {
+    render(<RoverImages name="curiosity" />);
+    await waitFor(() => {
+      const dropdown = document.querySelector(
+        "#cameraDropdown",
+      ) as HTMLSelectElement;
+      fireEvent.click(dropdown);
+      const dropdownOptions = document.querySelectorAll("option");
+      console.log(dropdownOptions[0].value);
+      fireEvent.change(dropdown, {
+        target: { value: dropdownOptions[1].value },
+      });
+      expect(dropdown.value).toEqual(dropdownOptions[1].value);
+    });
+  });
 });
