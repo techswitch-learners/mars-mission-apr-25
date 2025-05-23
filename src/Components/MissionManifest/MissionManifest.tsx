@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import "./MissionManifest.scss";
 
+
 export enum Rovers {
   CURIOSITY = "curiosity",
   OPPORTUNIY = "opportunity",
@@ -44,7 +45,7 @@ function MissionManifest(props: MissionManifestProps) {
           totalPhotos: data.total_photos,
         });
       });
-  }, [props.roverType]);
+  }, [props.roverType, apiKey]);
 
   if (!manifestData) {
     return <p id="loading-text">Loading...</p>;

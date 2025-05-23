@@ -59,7 +59,7 @@ function RoverImages(props: MissionManifestProps) {
     };
 
     fetchData();
-  }, [props.roverType]);
+  }, [props.roverType, apiKey]);
 
   let firstLetter = props.roverType.charAt(0).toUpperCase;
 
