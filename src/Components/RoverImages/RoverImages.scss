@@ -1,3 +1,6 @@
+@import "../../Styles/GlobalStyles.scss";
+
+
 body {
   background: #062356;
   color: #fffff2;
@@ -12,6 +15,13 @@ body {
 .error {
   text-align: center;
   font-size: 50px;
+}
+
+h2 {
+  font-family: $PublicSans;
+  text-align: center;
+  padding: 100px auto;
+  font-size: 0.8rem;
 }
 
 

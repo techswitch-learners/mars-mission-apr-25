@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./RoverImages.scss";
 import { ClipLoader } from "react-spinners";
-import { MissionManifestProps } from "../RoverDetails/RoverDetails";
+import { MissionManifestProps, rovers } from "../RoverDetails/RoverDetails";
 
 type RoverResponse = {
   id: number;
@@ -61,6 +61,9 @@ function RoverImages(props: MissionManifestProps) {
     fetchData();
   }, [props.roverType]);
 
+  let firstLetter = props.roverType.charAt(0).toUpperCase;
+
+
   if (error) {
     return (
       <div>
@@ -83,7 +86,7 @@ function RoverImages(props: MissionManifestProps) {
         />
       </div>
     );
-  } else {
+  } else if (props.roverType === rovers.CURIOSITY) {
     return (
       <div className="sliderContainer">
         <Slider {...sliderSettings}>
@@ -93,6 +96,8 @@ function RoverImages(props: MissionManifestProps) {
         </Slider>
       </div>
     );
+  } else {
+    return <h2>Sorry no images taken by the rover today. <br/> The rover's mission has been completed! </h2>
   }
 }
 

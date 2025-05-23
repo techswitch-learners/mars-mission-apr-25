@@ -3,6 +3,13 @@
 body{
     background-color: $blueBackground;
 }
+
+#loading-text {
+    text-align: center;
+    font-family: $PublicSans;
+    color: whitesmoke;
+    margin: 30px 0;
+}
 #mission-manifest-container {
     font-family: $MartianMono;
     width: 40vw;

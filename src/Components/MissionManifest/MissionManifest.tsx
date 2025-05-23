@@ -47,7 +47,7 @@ function MissionManifest(props: MissionManifestProps) {
   }, [props.roverType]);
 
   if (!manifestData) {
-    return <p>Loading...</p>;
+    return <p id="loading-text">Loading...</p>;
   } else {
     return (
       <div
