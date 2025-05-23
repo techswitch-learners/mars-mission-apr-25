@@ -48,15 +48,10 @@ function RoverImages(props: { name: string }) {
         setLatestCameras(manifestData.photo_manifest.photos[manifestData.photo_manifest.photos.length - 1].cameras);
         
         if (!selectedValue) {
-        const photoResponse = await fetch(
-          `https://api.nasa.gov/mars-photos/api/v1/rovers/${props.name}/photos?earth_date=${manifestData.photo_manifest.max_date}&api_key=${api}`,
-        );
-        const photoData = await photoResponse.json();
+          setSelectedValue(manifestData.photo_manifest.photos[manifestData.photo_manifest.photos.length - 1].cameras[0])
+        }
         
-        setRoverResponse(photoData.photos); 
-        setLoading(false);
-         }  else {
-         const photoResponse = await fetch(
+        const photoResponse = await fetch(
           `https://api.nasa.gov/mars-photos/api/v1/rovers/${props.name}/photos?earth_date=${manifestData.photo_manifest.max_date}&camera=${selectedValue}&api_key=${api}`,
         );
         const photoData = await photoResponse.json();
@@ -64,10 +59,6 @@ function RoverImages(props: { name: string }) {
         setRoverResponse(photoData.photos); 
         setLoading(false);   
 
-         }    
-
-
-        
       } catch (error) {
         setLoading(false);
         setError(
