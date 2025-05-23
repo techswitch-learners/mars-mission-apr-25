@@ -7,8 +7,9 @@
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.126",
     "@types/react-dom": "^19.1.5",
-    "dotenv": "^16.5.0",
+    "dayjs": "^1.11.13",
     "react": "^19.1.0",
+    "react-datepicker": "^8.3.0",
     "react-dom": "^19.1.0",
     "react-responsive-carousel": "^3.2.23",
     "react-router": "^7.6.0",
@@ -60,7 +61,6 @@
     "eslint-plugin-prettier": "^5.2.1",
     "globals": "^15.14.0",
     "jest": "^27.5.1",
-    
     "prettier": "3.4.2",
     "sass": "^1.85.0",
     "typescript-eslint": "^8.20.0"
