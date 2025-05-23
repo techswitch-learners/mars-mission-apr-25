@@ -4,6 +4,7 @@ import { Link, Route, BrowserRouter as Router, Routes } from "react-router";
 import PhotoOfTheDay from "./Components/photoOfTheDay/photoOfTheDay";
 import ProfilePage from "./pages/Profile/ProfilePage";
 import NavBar from "./Components/AddNavBar/NavBar";
+import RoverDetails from "./Components/RoverDetails/RoverDetails";
 
 function App() {
   return (
@@ -11,7 +12,15 @@ function App() {
       <Router>
         <NavBar />
         <Routes>
-          <Route path="/" element={<PhotoOfTheDay />} />
+          <Route
+            path="/"
+            element={
+              <>
+                {" "}
+                <PhotoOfTheDay /> <RoverDetails />{" "}
+              </>
+            }
+          />
           <Route path="/profile" element={<ProfilePage />} />
           <Route
             path="*"

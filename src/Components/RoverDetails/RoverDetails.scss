@@ -1,0 +1,142 @@
+@import "../../Styles/GlobalStyles.scss";
+
+#rover-information-container {
+margin-top: 60px;
+
+  #rover-header { 
+  color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  margin: 40px auto;
+  font-family: $MartianMono;
+  }
+  #scroll-message{
+    display: none;
+  }
+}
+
+#rover-button-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 50vw;
+    font-family: $PublicSans;
+    button {
+        all: unset;
+        background: none;
+        padding:0;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        font-family: $PublicSans;
+        cursor: pointer;
+        span {
+            margin: 10px 0;
+            color: whitesmoke;
+        }
+    }
+  .selected-rover {
+    span {
+       text-decoration: underline;
+    }
+        } 
+    img {
+        width: 150px;
+    }
+}
+
+// Media Queries
+
+@media(min-width: 1440px) {
+    #rover-button-container {
+        width: 40vw;
+    }
+}
+
+@media(max-width: 898px) {
+    #rover-button-container {
+        width: 65vw;
+    }
+}
+
+@media(max-width: 766px) {
+    #rover-information-container {
+        #rover-header { 
+         margin: 40px auto 15px auto;
+       }
+        #scroll-message{
+            display: block;
+            color: whitesmoke;
+            font-family: $MartianMono;
+            font-size: 12px;
+            text-align: center;
+        }
+    }
+    #rover-button-container {
+        width:20vw;
+    }
+
+    .button-carousel {
+        display: flex;
+        overflow-x: auto;
+        gap: 1rem;
+        padding: 1rem;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+
+        &::-webkit-scrollbar {
+            height: 10px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: #999;
+        }
+        
+        button {
+            flex: 0 0 auto;
+            scroll-snap-align: start;
+
+        }
+    }
+}
+
+@media(max-width: 425px) {
+
+   #rover-header { 
+      margin: 15px auto;
+  }
+    #rover-button-container {
+        width: 35vw;
+    }
+
+    .button-carousel {
+        display: flex;
+        overflow-x: auto;
+        gap: 1rem;
+        padding: 1rem;
+        scroll-snap-type: x mandatory;
+        
+        button {
+            flex: 0 0 auto;
+            scroll-snap-align: start;
+
+        }
+    }
+}
+
+@media(max-width: 376px) {
+    #rover-button-container {
+        width: 40vw;
+    }
+}
+
+@media(max-width: 320px) {
+    #rover-button-container {
+        width: 47vw;
+    }
+}

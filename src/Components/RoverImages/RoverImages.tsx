@@ -4,20 +4,21 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./RoverImages.scss";
 import { ClipLoader } from "react-spinners";
+import { MissionManifestProps, Rovers } from "../RoverDetails/RoverDetails";
 
 type RoverResponse = {
   id: number;
   img_src: string;
 };
 
-const api = "fCp5fNsscdDmov0Vw4lpU4bOkdMTCuCA9tnoKgYH";
+const apiKey = process.env.REACT_APP_API_KEY;
 
-function RoverImages(props: { name: string }) {
+function RoverImages(props: MissionManifestProps) {
   const [roverResponse, setRoverResponse] = useState<RoverResponse[]>();
   const [error, setError] = useState<string>("");
   const [isLoading, setLoading] = useState<boolean>(false);
 
-  const altText = `Photo taken by the Mars Rover ${props.name}`;
+  const altText = `Photo taken by the Mars Rover ${props.roverType}`;
 
   const sliderSettings = {
     dots: false,
@@ -38,12 +39,12 @@ function RoverImages(props: { name: string }) {
       try {
         setLoading(true);
         const manifestResponse = await fetch(
-          `https://api.nasa.gov/mars-photos/api/v1/manifests/${props.name}?api_key=${api}`,
+          `https://api.nasa.gov/mars-photos/api/v1/manifests/${props.roverType}?api_key=${apiKey}`,
         );
         const manifestData = await manifestResponse.json();
 
         const photoResponse = await fetch(
-          `https://api.nasa.gov/mars-photos/api/v1/rovers/${props.name}/photos?earth_date=${manifestData.photo_manifest.max_date}&api_key=${api}`,
+          `https://api.nasa.gov/mars-photos/api/v1/rovers/${props.roverType}/photos?earth_date=${manifestData.photo_manifest.max_date}&api_key=${apiKey}`,
         );
         const photoData = await photoResponse.json();
 
@@ -58,7 +59,7 @@ function RoverImages(props: { name: string }) {
     };
 
     fetchData();
-  }, [props.name]);
+  }, [props.roverType]);
 
   if (error) {
     return (
@@ -82,7 +83,7 @@ function RoverImages(props: { name: string }) {
         />
       </div>
     );
-  } else {
+  } else if (props.roverType === Rovers.CURIOSITY) {
     return (
       <div className="sliderContainer">
         <Slider {...sliderSettings}>
@@ -91,6 +92,13 @@ function RoverImages(props: { name: string }) {
           ))}
         </Slider>
       </div>
+    );
+  } else {
+    return (
+      <h2>
+        Sorry no images taken by the rover today. <br /> The rover&apos;s
+        mission has been completed!
+      </h2>
     );
   }
 }
