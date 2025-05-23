@@ -94,7 +94,12 @@ function RoverImages(props: MissionManifestProps) {
       </div>
     );
   } else {
-    return <h2>Sorry no images taken by the rover today. <br/> The rover's mission has been completed! </h2>
+    return (
+      <h2>
+        Sorry no images taken by the rover today. <br /> The rover&apos;s
+        mission has been completed!
+      </h2>
+    );
   }
 }
 

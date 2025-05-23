@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useEffect } from "react";
 import "./MissionManifest.scss";
 
-
 export enum Rovers {
   CURIOSITY = "curiosity",
   OPPORTUNIY = "opportunity",
@@ -45,7 +44,6 @@ function MissionManifest(props: MissionManifestProps) {
           totalPhotos: data.total_photos,
         });
       });
-        // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.roverType]);
 
   if (!manifestData) {

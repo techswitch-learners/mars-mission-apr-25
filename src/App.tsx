@@ -12,7 +12,15 @@ function App() {
       <Router>
         <NavBar />
         <Routes>
-          <Route path="/" element={ <> <PhotoOfTheDay /> <RoverDetails /> </> } />
+          <Route
+            path="/"
+            element={
+              <>
+                {" "}
+                <PhotoOfTheDay /> <RoverDetails />{" "}
+              </>
+            }
+          />
           <Route path="/profile" element={<ProfilePage />} />
           <Route
             path="*"
