@@ -3,14 +3,14 @@ import { useState } from "react";
 import { useEffect } from "react";
 import "./MissionManifest.scss";
 
-export enum rovers {
+export enum Rovers {
   CURIOSITY = "curiosity",
   OPPORTUNIY = "opportunity",
   SPIRIT = "spirit",
 }
 
 export interface MissionManifestProps {
-  roverType: rovers;
+  roverType: Rovers;
 }
 
 type manifestData = {

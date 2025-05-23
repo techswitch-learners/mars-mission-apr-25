@@ -1,7 +1,7 @@
 import React from "react";
 import { fireEvent, render, waitFor } from "@testing-library/react";
 import RoverImages from "./RoverImages";
-import { rovers } from "../RoverDetails/RoverDetails";
+import { Rovers } from "../RoverDetails/RoverDetails";
 
 const photo_mock_data = {
   photos: [
@@ -38,7 +38,7 @@ describe("Testing the rover image displayed on page load", () => {
       });
   });
   test("Testing the rover image displayed on page load", async () => {
-    render(<RoverImages roverType={rovers.CURIOSITY} />);
+    render(<RoverImages roverType={Rovers.CURIOSITY} />);
 
     await waitFor(() => {
       const testImage = document.querySelector("img") as HTMLImageElement;
@@ -50,7 +50,7 @@ describe("Testing the rover image displayed on page load", () => {
   });
 
   test("Testing the rover image is displayed when next is clicked", async () => {
-    render(<RoverImages roverType={rovers.CURIOSITY} />);
+    render(<RoverImages roverType={Rovers.CURIOSITY} />);
     await waitFor(() => {
       const firstTestImage = document.querySelector("img") as HTMLImageElement;
       const firstTestImageDiv = firstTestImage.parentElement?.parentElement;

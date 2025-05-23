@@ -7,30 +7,30 @@ import opportunityButton from "../../Assets/Images/Opportunity_button.png";
 import "./RoverDetails.scss";
 import RoverImages from "../RoverImages/RoverImages";
 
-export enum rovers {
+export enum Rovers {
   CURIOSITY = "curiosity",
   OPPORTUNIY = "opportunity",
   SPIRIT = "spirit",
 }
 
 export interface MissionManifestProps {
-  roverType: rovers;
+  roverType: Rovers;
 }
 
 function RoverDetails() {
-  const [rover, setRover] = useState<rovers>(rovers.SPIRIT);
-  const [selectedRover, setSelectedRover] = useState<rovers>(rovers.SPIRIT);
+  const [rover, setRover] = useState<Rovers>(Rovers.SPIRIT);
+  const [selectedRover, setSelectedRover] = useState<Rovers>(Rovers.SPIRIT);
 
   const handleClick = (id: string) => {
     if (id === "spirit-button") {
-      setRover(rovers.SPIRIT);
-      setSelectedRover(rovers.SPIRIT);
+      setRover(Rovers.SPIRIT);
+      setSelectedRover(Rovers.SPIRIT);
     } else if (id === "curiosity-button") {
-      setRover(rovers.CURIOSITY);
-      setSelectedRover(rovers.CURIOSITY);
+      setRover(Rovers.CURIOSITY);
+      setSelectedRover(Rovers.CURIOSITY);
     } else if (id === "opportunity-button") {
-      setRover(rovers.OPPORTUNIY);
-      setSelectedRover(rovers.OPPORTUNIY);
+      setRover(Rovers.OPPORTUNIY);
+      setSelectedRover(Rovers.OPPORTUNIY);
     }
   };
 

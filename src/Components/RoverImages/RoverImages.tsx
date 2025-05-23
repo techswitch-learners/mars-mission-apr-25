@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./RoverImages.scss";
 import { ClipLoader } from "react-spinners";
-import { MissionManifestProps, rovers } from "../RoverDetails/RoverDetails";
+import { MissionManifestProps, Rovers } from "../RoverDetails/RoverDetails";
 
 type RoverResponse = {
   id: number;
@@ -86,7 +86,7 @@ function RoverImages(props: MissionManifestProps) {
         />
       </div>
     );
-  } else if (props.roverType === rovers.CURIOSITY) {
+  } else if (props.roverType === Rovers.CURIOSITY) {
     return (
       <div className="sliderContainer">
         <Slider {...sliderSettings}>
