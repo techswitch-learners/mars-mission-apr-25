@@ -45,7 +45,8 @@ function MissionManifest(props: MissionManifestProps) {
           totalPhotos: data.total_photos,
         });
       });
-  }, [props.roverType, apiKey]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.roverType]);
 
   if (!manifestData) {
     return <p id="loading-text">Loading...</p>;
