@@ -27,6 +27,7 @@ export default function NavBar() {
           </div>
         </nav>
       </header>
+      <div className="stars"></div>
     </div>
   );
 }
